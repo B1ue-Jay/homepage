@@ -52,7 +52,11 @@
       "Bash(curl -fsSL https://raw.githubusercontent.com/actions/deploy-pages/__TRACKED_VAR__/action.yml)",
       "Bash(echo \"homepage env node: $\\(/opt/anaconda3/envs/homepage/bin/node -v 2>&1\\)\")",
       "Bash(/opt/anaconda3/envs/homepage/bin/npm -v)",
-      "Bash(echo \"homepage env npm:  $\\(/opt/anaconda3/envs/homepage/bin/npm -v 2>&1\\)\")"
+      "Bash(echo \"homepage env npm:  $\\(/opt/anaconda3/envs/homepage/bin/npm -v 2>&1\\)\")",
+      "Bash(lsof -nP -iTCP:4322 -sTCP:LISTEN)",
+      "Bash(lsof -nP -iTCP:4321 -sTCP:LISTEN)",
+      "Bash(lsof -nP -iTCP:8765 -sTCP:LISTEN)",
+      "Bash(kill 92113)"
     ],
     "additionalDirectories": [
       "/Users/chocolate/.claude"
