@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { presentations } from '../data/presentations';
+
+const LINK_LABELS: Record<string, string> = {
+  slides: 'Slides',
+  poster: 'Poster',
+  video: 'Video',
+};
+---
+
+<Base title="Presentations" description="Talks and posters.">
+  <PageHeader title="Presentations" lead="Talks, posters, and invited presentations." />
+
+  <section class="section">
+    <div class="container">
+      <ul class="entry-list">
+        {
+          presentations.map((t) => (
+            <li class="entry">
+              <div class="head">
+                <span class="name">{t.title}</span>
+                <span class="when">{t.when}</span>
+              </div>
+              <div class="meta">{t.kind} · {t.venue}</div>
+              {t.links && (
+                <div class="pub-links">
+                  {Object.entries(t.links).map(([k, v]) =>
+                    v ? (
+                      <a href={v} target="_blank" rel="noopener">
+                        {LINK_LABELS[k] ?? k}
+                      </a>
+                    ) : null
+                  )}
+                </div>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</Base>

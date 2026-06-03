@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { researchIntro, researchAreas } from '../data/research';
+---
+
+<Base title="Research" description={researchIntro}>
+  <PageHeader title="Research" lead={researchIntro} />
+
+  <section class="section">
+    <div class="container">
+      <div class="grid cols-2">
+        {
+          researchAreas.map((area) => (
+            <article class="card">
+              <h3>{area.title}</h3>
+              <p>{area.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>

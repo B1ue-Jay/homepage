@@ -1,0 +1,54 @@
+---
+import { nav, site } from '../config';
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+---
+
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a class="brand-wrap" href="/" aria-label={site.name}>
+      <span class="brand">{site.name}</span>
+      <!-- Original hand-drawn underline swash (two-pass pen), inherits --accent via currentColor -->
+      <svg
+        class="brand-swash"
+        viewBox="0 0 200 24"
+        preserveAspectRatio="none"
+        fill="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path
+          d="M4 9 C 40 20, 78 21, 120 16 S 176 8, 196 5"
+          stroke="currentColor"
+          stroke-width="3.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-opacity="0.9"
+        />
+        <path
+          d="M6 12 C 46 21, 86 22, 126 17 S 178 11, 194 7"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-opacity="0.5"
+        />
+      </svg>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={['nav-link', { active: isActive(item.href) }]}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a class="btn btn-primary nav-cta" href="/#contact">Get in touch</a>
+    </nav>
+  </div>
+</header>

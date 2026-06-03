@@ -1,0 +1,12 @@
+---
+import { site } from '../config';
+import SocialIcons from './SocialIcons.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p class="copyright">© {year} {site.name}. All rights reserved.</p>
+    <SocialIcons />
+  </div>
+</footer>

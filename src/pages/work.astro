@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { experience, education, awards } from '../data/experience';
+---
+
+<Base title="Work" description="Experience, education, and awards.">
+  <PageHeader title="Work" lead="Experience and education." />
+
+  <section class="section">
+    <div class="container">
+      <h2>Experience</h2>
+      <ul class="timeline">
+        {
+          experience.map((it) => (
+            <li>
+              <div class="when">{it.when}</div>
+              <div class="what">{it.what}</div>
+              <div class="where">{it.where}</div>
+              {it.desc && <p class="desc">{it.desc}</p>}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="container">
+      <h2>Education</h2>
+      <ul class="timeline">
+        {
+          education.map((it) => (
+            <li>
+              <div class="when">{it.when}</div>
+              <div class="what">{it.what}</div>
+              <div class="where">{it.where}</div>
+              {it.desc && <p class="desc">{it.desc}</p>}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  {
+    awards.length > 0 && (
+      <section class="section">
+        <div class="container">
+          <h2>Awards &amp; honors</h2>
+          <ul class="entry-list">
+            {awards.map((it) => (
+              <li class="entry">
+                <div class="head">
+                  <span class="name">{it.what}</span>
+                  <span class="when">{it.when}</span>
+                </div>
+                <div class="meta">{it.where}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+</Base>

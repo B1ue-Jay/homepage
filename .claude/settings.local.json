@@ -1,0 +1,53 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:hirajaved.com)",
+      "Bash(ls -la /Users/chocolate/.claude/projects/-Users-chocolate-it-code-homepage/memory/ 2>/dev/null; echo \"---GLOBAL MEMORY DIRS---\"; ls -d /Users/chocolate/.claude/projects/*/memory/ 2>/dev/null | head -50)",
+      "Read(//Users/chocolate/.claude/projects/**)",
+      "WebSearch",
+      "WebFetch(domain:r.jina.ai)",
+      "WebFetch(domain:docs.github.com)",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" https://hirajaved.com/ -o /tmp/hira_home.html)",
+      "Bash(curl -s -L https://hirajaved.com/)",
+      "WebFetch(domain:developers.cloudflare.com)",
+      "WebFetch(domain:www.netlify.com)",
+      "Read(//private/tmp/**)",
+      "Bash(perl -0777 -ne 'while\\(/<style[^>]*>\\(.*?\\)<\\\\/style>/gs\\){print \"----STYLE BLOCK----\\\\n$1\\\\n\"}' /tmp/hira_home.html)",
+      "Bash(curl -sL --max-time 30 -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120 Safari/537.36\" https://hirajaved.com/ -o /tmp/hira_index.html)",
+      "Read(//tmp/**)",
+      "Bash(curl -sL --max-time 30 -A \"Mozilla/5.0\" \"https://hirajaved.com/_astro-1740608042257/_slug_.BXVU16HW.css\" -o hira_main.css)",
+      "Bash(curl -sL --max-time 30 -A \"Mozilla/5.0\" \"https://cdn.zyrosite.com/u1/google-fonts/font-faces?family=Roboto:wght@300;400;500;600;700&family=Quicksand:wght@400;500;700&display=swap\" -o hira_fonts.css)",
+      "Bash(perl -0777 -ne 'while\\(/<style[^>]*>\\(.*?\\)<\\\\/style>/gis\\){print \"----STYLE BLOCK----\\\\n$1\\\\n\"}' hira_index.html)",
+      "Bash(grep -oiE '#[0-9a-f]{3,8}\\\\b' hira_main.css)",
+      "Bash(perl -0777 -ne 'while\\(/<\\(h[1-4]\\)[^>]*>\\(.*?\\)<\\\\/\\\\1>/gis\\){my $t=$2; $t=~s/<[^>]+>//g; $t=~s/\\\\s+/ /g; $t=~s/^\\\\s+|\\\\s+$//g; print \"$1: $t\\\\n\" if length\\($t\\)>0}' hira_index.html)",
+      "Bash(perl -0777 -ne 'while\\(/data-nav-link[^>]*>\\(.*?\\)<\\\\//gis\\){print \"$1\\\\n\"}' hira_index.html)",
+      "Bash(perl -0777 -ne 'while\\(/\\(.{120}\\)--09dd1150:\\(linear-gradient\\\\\\([^;]*\\)/gis\\){my $pre=$1; $pre=~s/\\\\s+/ /g; print \"GRADIENT: $2\\\\n  ...context: ...$pre\\\\n\\\\n\"}' hira_index.html)",
+      "Bash(perl -0777 -ne 'while\\(/<\\(button|a\\)[^>]*>\\(.*?\\)<\\\\/\\\\1>/gis\\){my $t=$2;$t=~s/<[^>]+>//g;$t=~s/\\\\s+/ /g;$t=~s/^\\\\s+|\\\\s+$//g;print \"$t\\\\n\" if length\\($t\\)>1 && length\\($t\\)<40}' hira_index.html)",
+      "Bash(conda --version)",
+      "Bash(conda env *)",
+      "Bash(conda create *)",
+      "Bash(conda run *)",
+      "Read(//opt/anaconda3/envs/homepage/bin/**)",
+      "Bash(/opt/anaconda3/envs/homepage/bin/node -v)",
+      "Bash(conda list *)",
+      "Read(//Users/chocolate/.claude/**)",
+      "WebFetch(domain:assets.zyrosite.com)",
+      "Bash(curl -sL --max-time 30 -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" https://hirajaved.com/ -o /tmp/hira.html)",
+      "Bash(curl -sL --max-time 30 -A \"Mozilla/5.0\" \"https://hirajaved.com/_astro-1740608042257/_slug_.BXVU16HW.css\" -o /tmp/hira.css)",
+      "Bash(grep -oiE \"\\(shape|clip-path|mask\\)[^;\\\\\"}]{0,40}\" /tmp/hira.html)",
+      "Bash(python3 -)",
+      "WebFetch(domain:fonts.googleapis.com)",
+      "Bash(curl -s -A 'Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124 Safari/537.36' 'https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap')",
+      "Bash(curl -s -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36' 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700')",
+      "Bash(npm run *)",
+      "Read(//Users/chocolate/.nvm/versions/**)",
+      "Read(//opt/homebrew/opt/**)",
+      "Read(//usr/local/**)",
+      "Bash(PATH=/opt/anaconda3/envs/homepage/bin:__TRACKED_VAR__ npm run build)",
+      "Bash(PATH=/opt/anaconda3/envs/homepage/bin:__TRACKED_VAR__ npm run dev)"
+    ],
+    "additionalDirectories": [
+      "/Users/chocolate/.claude"
+    ]
+  }
+}
