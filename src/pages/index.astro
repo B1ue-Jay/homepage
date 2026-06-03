@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import SocialIcons from '../components/SocialIcons.astro';
-import { site, CTA_ACCENT_FONT } from '../config';
+import { site, CTA_ACCENT_FONT, link } from '../config';
 import { publications } from '../data/publications';
 import { news } from '../data/news';
 import { formatAuthors, hasAuthorMarks } from '../utils/authors';
@@ -20,7 +20,7 @@ const selectedHasMarks = hasAuthorMarks(selected);
         <p class="role"><strong>{site.role}</strong> at {site.affiliation}</p>
         <p class="lead">{site.tagline}</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/#contact">Get in touch</a>
+          <a class="btn btn-primary" href={link('/') + '#contact'}>Get in touch</a>
           {site.cv && <a class="btn btn-ghost" href={site.cv}>Download CV</a>}
         </div>
       </div>
@@ -36,7 +36,7 @@ const selectedHasMarks = hasAuthorMarks(selected);
           />
         </svg>
         <!-- 换成你的照片：把文件放到 public/ 下并改这里的 src，例如 /me.jpg -->
-        <img class="avatar" src="/avatar.jpg" alt={`Portrait of ${site.name}`} width="320" height="400" />
+        <img class="avatar" src={link('/avatar.jpg')} alt={`Portrait of ${site.name}`} width="320" height="400" />
       </div>
     </div>
   </section>
@@ -103,7 +103,7 @@ const selectedHasMarks = hasAuthorMarks(selected);
             ))}
           </ul>
           <p style="margin-top:1.5rem">
-            <a class="btn btn-ghost" href="/publications">See all publications →</a>
+            <a class="btn btn-ghost" href={link('/publications')}>See all publications →</a>
           </p>
         </div>
       </section>

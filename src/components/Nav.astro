@@ -1,13 +1,16 @@
 ---
-import { nav, site } from '../config';
-const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+import { nav, site, link } from '../config';
+// Astro.url.pathname 在 base 下会包含 '/homepage' 段，需先剥掉 base 再与 nav 配置里的无 base href 比较。
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '');
+let path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+if (base && (path === base || path.startsWith(base + '/'))) path = path.slice(base.length) || '/';
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
 ---
 
 <header class="site-nav">
   <div class="container nav-inner">
-    <a class="brand-wrap" href="/" aria-label={site.name}>
+    <a class="brand-wrap" href={link('/')} aria-label={site.name}>
       <span class="brand">{site.name}</span>
       <!-- Original hand-drawn underline swash (two-pass pen), inherits --accent via currentColor -->
       <svg
@@ -40,7 +43,7 @@ const isActive = (href: string) =>
       {
         nav.map((item) => (
           <a
-            href={item.href}
+            href={link(item.href)}
             class:list={['nav-link', { active: isActive(item.href) }]}
             aria-current={isActive(item.href) ? 'page' : undefined}
           >
@@ -48,7 +51,7 @@ const isActive = (href: string) =>
           </a>
         ))
       }
-      <a class="btn btn-primary nav-cta" href="/#contact">Get in touch</a>
+      <a class="btn btn-primary nav-cta" href={link('/') + '#contact'}>Get in touch</a>
     </nav>
   </div>
 </header>

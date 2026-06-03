@@ -2,6 +2,20 @@
 //  全站配置 —— 日常你基本只改这个文件 + src/data/ 里的列表文件
 // ============================================================
 
+// ---- base 前缀助手：本站部署在子路径 /homepage/ 下 ----
+//   站内绝对路径（如 '/work'、'/avatar.jpg'）必须加上 base 前缀，
+//   否则在 https://b1ue-jay.github.io/homepage/ 下会解析到根域名而 404。
+//   外链（http/https/mailto/tel）和纯锚点（#xxx）原样返回，不加前缀。
+//   注意：Astro 会自动给 _astro/ 打包资源和 ESM import 的图片加 base，
+//   只有「手写在 markup / 数据里的绝对路径字符串」才需要用本助手。
+export const link = (p: string): string => {
+  if (/^(https?:|mailto:|tel:|#)/.test(p)) return p;
+  // 归一化：无论 Astro 给出的 BASE_URL 带不带结尾斜杠，都先去掉，得到 '/homepage'
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  if (p === '/') return base + '/'; // 首页用带斜杠的目录地址，避免一次 301 跳转
+  return base + (p.startsWith('/') ? p : '/' + p);
+};
+
 // ---- 主题配色：改这一个值即可在 4 套配色间整站切换 ----
 //   'slate'       冷灰蓝（默认 · 推荐）
 //   'teal'        深青灰
