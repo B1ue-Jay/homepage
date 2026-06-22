@@ -20,7 +20,7 @@
      1 = 原始大小；1.1 = 放大 10%；0.9 = 缩小 10%。
      （原理：下面所有字号都用 rem，rem 跟随 <html> 的字号，
        而 <html> 字号 = 100% × 本开关。） */
-  --font-scale: 1.06;
+  --font-scale: 1.0;
 
   /* Type scale — fluid between mobile and desktop (≈40→64 etc.) */
   --fs-h1: clamp(2.5rem, 4.5vw + 1rem, 4rem);     /* 40 → 64 */
